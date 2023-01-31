@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\RandomImageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ImageController::class, 'index']);
+
 Route::resource('/main', ImageController::class);
-Route::get('/randomimage', [ImageController::class, 'randomimage']);
-//Route::post('/saveimage/{id}', [ImageController::class, 'store']);
+
+Route::resource('/randomimage', RandomImageController::class);
+
+// Route::get('/randomimage', [RandomImageController::class, 'index']);
+// Route::post('/randomimage', [RandomImageController::class, 'store']);
+// Route::get('/randomimage/store/{ id }', [RandomImageController::class, 'store']);
 
 // Route::get('/', function () {
 //     return view('welcome');
