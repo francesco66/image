@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ImageController::class, 'index']);
+Route::get('/', function() {
+    return view('main', ['image_id' => '']);
+});
 
 Route::resource('/main', ImageController::class);
 

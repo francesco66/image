@@ -41,11 +41,13 @@ class ImageController extends Controller
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
 
+        // dd($request->file('image'));
+
         $image_path = $request->file('image')->store('image', 'public');
 
         // $data = Image::create([
         Image::create([
-            'image' => $image_path,
+            'image_path' => $image_path,
         ]);
 
         session()->flash('success', 'Image Upload successfully');

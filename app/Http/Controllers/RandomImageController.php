@@ -65,7 +65,6 @@ class RandomImageController extends Controller
      */
     public function show($id)
     {
-
         $response = Http::get('https://api.unsplash.com/photos/' . $id . '/?client_id=' . env('UNSPLASH_ACCESS_KEY'));
         $image_src = $response->json();
 
@@ -73,14 +72,20 @@ class RandomImageController extends Controller
 
         $response = Http::get($image_download);
 
-        dd($response);
+        // dd($response);
+
+        $contents = file_get_contents($image_download);
+        // dd($contents);
+
+        // dd($response);
         // dd($id, $image_src);
 
-        $this->validate($request, [
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ]);
+        // $this->validate($request, [
+        //     'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        // ]);
 
-        $image_path = $request->file('image')->store('image', 'public');
+        $image_path = $contents->store('image', 'public');
+        // $image_path = $request->file('image')->store('image', 'public');
 
         // $data = Image::create([
         Image::create([

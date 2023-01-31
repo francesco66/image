@@ -11,6 +11,8 @@
                     <input type="file" name="image" @change="showPreview(event)"
                         class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
 
+                    <img id="preview" class="object-cover h-32 mt-2 w-60">
+
                 </label>
                 <button type="submit" class="px-4 py-2 text-sm text-white bg-indigo-600 rounded">Submit</button>
             </form>
@@ -29,11 +31,11 @@
                     </div>
                     @isset($image)
                         <p>{{ $image_id }}</p>
-                        <img id="preview" class="w-96" src="{{ asset($image) }}" />
+                        <img class="w-96" src="{{ asset($image) }}" />
                         {{-- <p>{{ $author }} <span> <a href="{{ $author_link }}">{{ $author_link }}</a></span></p> --}}
                     @endisset
                     @empty($image)
-                        <img id="preview" class="object-cover h-32 mt-2 w-60">
+                        <img class="object-cover h-32 mt-2 w-60">
                     @endempty
                     @error('image')
                         <span class="text-red-600 text-sm">{{ $message }}</span>
